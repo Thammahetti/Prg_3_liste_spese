@@ -11,18 +11,33 @@
 
         <div class="container mt-5">
             <h1>LISTA SPESE</h1>
-            <button type="submit" class="btn btn-primary ">Rimuovi</button>
-            <h3>Mele</h3>
-            <form>
+            {% if lista_spese  %}
+                <ul>
+                    {% for product in lista_spese %}
+                    <li>
+                        {{ product }} 
+                        <form action="/remove/{{loop.index0}}" method="post">
+                            <button type="submit" class="btn btn-primary">🗑️</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+           
+            <p>La lista è vuota.</p>
+            {% endif %}
+            <form action="/add" method="post">
 
                 <div class="mb-3">
                 <label for="product" class="form-label">Product</label>
-                <input type="product" class="form-control" id="product">
+                <input type="product" name ="product" class="form-control" id="product">
             
                 </div>
                 <button type="submit" class="btn btn-primary">Aggiungi</button>
             </form>
-            <button type="submit" class="btn btn-primary mt-5">Svuota</button>
+            <form action="/delete" method="post">
+                <button type="submit" class="btn btn-primary mt-5">Svuota</button>
+            </form>
         </div>
     </body>
 </html>
