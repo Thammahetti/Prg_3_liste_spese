@@ -13,10 +13,10 @@
             <h1>LISTA SPESE</h1>
             {% if lista_spese  %}
                 <ul>
-                    {% for product in lista_spese %}
+                    {% for elemento in lista_spese %}
                     <li>
-                        {{ product }} 
-                        <form action="/remove/{{loop.index0}}" method="post">
+                        {{ elemento.elemento }} 
+                        <form action="/remove/{{elemento.id}}" method="post">
                             <button type="submit" class="btn btn-primary">🗑️</button>
                         </form>
                     </li>
@@ -29,8 +29,8 @@
             <form action="/add" method="post">
 
                 <div class="mb-3">
-                <label for="product" class="form-label">Product</label>
-                <input type="product" name ="product" class="form-control" id="product">
+                <label for="elemento" class="form-label">Product</label>
+                <input type="elemento" name ="elemento" class="form-control" id="product">
             
                 </div>
                 <button type="submit" class="btn btn-primary">Aggiungi</button>
